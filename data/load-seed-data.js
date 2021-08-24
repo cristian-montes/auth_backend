@@ -16,7 +16,7 @@ async function run() {
       usersData.map(user => {
         const hash = bcrypt.hashSync(user.password, 8); //-NEW--
         return client.query(`
-                      INSERT INTO users (email, password)
+                      INSERT INTO users (email, hash)
                       VALUES ($1, $2)
                       RETURNING *;
                   `,
